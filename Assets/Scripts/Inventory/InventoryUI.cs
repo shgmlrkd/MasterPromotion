@@ -6,6 +6,9 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private GameObject inventoryPanel;
 
+    [SerializeField]
+    private InteractionSystem interactionSystem;
+
     private bool inventoryToggle = false;
     public bool isInventoryOpen => inventoryToggle;
 
@@ -16,6 +19,8 @@ public class InventoryUI : MonoBehaviour
 
     private void Update()
     {
+        if (!interactionSystem.IsInteracting) return;
+
         if (Keyboard.current.iKey.wasPressedThisFrame)
         {
             inventoryToggle = !inventoryToggle;

@@ -28,7 +28,13 @@ public class PlayerStateManager : CharacterStateManager
     {
         if (status.IsDead || status.IsHit) return;
 
-        if (inventoryUI.isInventoryOpen || !interactionSystem.IsInteracting)
+        if(!interactionSystem.IsInteracting)
+        {
+            SetState(State.Idle);
+            return;
+        }
+
+        if (inventoryUI.isInventoryOpen)
         {
             SetState(State.Idle);
             return;
