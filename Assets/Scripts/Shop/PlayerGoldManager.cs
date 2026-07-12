@@ -5,7 +5,7 @@ public class PlayerGoldManager : MonoBehaviour
 {
     public static PlayerGoldManager Instance;
 
-    private int gold = 10000;
+    private int gold = 0;
     public int Gold => gold;
 
     public event Action<int> OnUpdateGold;
@@ -13,6 +13,13 @@ public class PlayerGoldManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void AddGold(int amount)
+    {
+        gold += amount;
+
+        OnUpdateGold?.Invoke(gold);
     }
 
     public bool TryUseGold(int price)

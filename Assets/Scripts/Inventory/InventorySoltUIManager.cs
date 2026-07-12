@@ -32,7 +32,10 @@ public class InventorySoltUIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        inventory.OnUpdateInventory += UpdateInventoryUI; 
+        inventory.OnUpdateInventory += UpdateInventoryUI;
+
+        // destroy에서 처리하기 때문에 이미 구독 중일 경우 다시 제거후 구독
+        PlayerGoldManager.Instance.OnUpdateGold -= UpdateGoldText;
         PlayerGoldManager.Instance.OnUpdateGold += UpdateGoldText;
     }
 

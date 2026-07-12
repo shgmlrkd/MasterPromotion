@@ -21,7 +21,7 @@ public class ShopUI : MonoBehaviour
 
     public void Close()
     {
-        shopObj.SetActive(false);
         inventoryObj.SetActive(false);
+        shopObj.SetActive(false);
     }
 }

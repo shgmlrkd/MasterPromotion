@@ -23,10 +23,12 @@ public class ShopSlotUIManager : MonoBehaviour
 
     private void OnEnable()
     {
+        // destroy에서 처리하기 때문에 이미 구독 중일 경우 다시 제거후 구독
+        PlayerGoldManager.Instance.OnUpdateGold -= UpdateGoldText;
         PlayerGoldManager.Instance.OnUpdateGold += UpdateGoldText;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         if(PlayerGoldManager.Instance != null)
         {
@@ -46,6 +48,6 @@ public class ShopSlotUIManager : MonoBehaviour
 
     private void UpdateGoldText(int gold)
     {
-        goldText.text = gold.ToString() + "G";
+        goldText.text = gold + "G";
     }
 }
