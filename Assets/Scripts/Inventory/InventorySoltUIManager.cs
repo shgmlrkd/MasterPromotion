@@ -22,6 +22,9 @@ public class InventorySoltUIManager : MonoBehaviour
     [SerializeField]
     private Inventory inventory;
 
+    [SerializeField]
+    private TextMeshProUGUI goldText;
+
     private void Awake()
     {
         Initialize();
@@ -29,7 +32,8 @@ public class InventorySoltUIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        inventory.OnUpdateInventory += UpdateInventoryUI;
+        inventory.OnUpdateInventory += UpdateInventoryUI; 
+        PlayerGoldManager.Instance.OnUpdateGold += UpdateGoldText;
     }
 
     private void OnDestroy()
@@ -38,6 +42,21 @@ public class InventorySoltUIManager : MonoBehaviour
         {
             inventory.OnUpdateInventory -= UpdateInventoryUI;
         }
+
+        if (PlayerGoldManager.Instance != null)
+        {
+            PlayerGoldManager.Instance.OnUpdateGold -= UpdateGoldText;
+        }
+    }
+
+    private void Start()
+    {
+        goldText.text = PlayerGoldManager.Instance.Gold.ToString() + "G";
+    }
+
+    private void UpdateGoldText(int gold)
+    {
+        goldText.text = gold.ToString() + "G";
     }
 
     private void Initialize()

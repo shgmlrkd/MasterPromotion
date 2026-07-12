@@ -5,7 +5,10 @@ public class ShopUI : MonoBehaviour
     [SerializeField]
     private GameObject shopObj;
 
-    private void Awake()
+    [SerializeField]
+    private GameObject inventoryObj;
+
+    private void Start()
     {
         Close();
     }
@@ -13,10 +16,12 @@ public class ShopUI : MonoBehaviour
     public void Open()
     {
         shopObj.SetActive(true);
+        inventoryObj.SetActive(true);
     }
 
     public void Close()
     {
         shopObj.SetActive(false);
+        inventoryObj.SetActive(false);
     }
 }

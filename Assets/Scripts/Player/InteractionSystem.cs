@@ -5,7 +5,8 @@ public class InteractionSystem : MonoBehaviour
 {
     private IInteractable currentInteractable = null;
 
-    private bool isInteracting = false;
+    private bool isInteracting = true;
+    public bool IsInteracting => isInteracting;
 
     private void Update()
     {

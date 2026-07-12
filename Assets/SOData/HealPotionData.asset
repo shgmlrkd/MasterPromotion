@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: HealPotionData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   sprite: {fileID: 21300000, guid: 32421217272434b4f9a645c1de1ddeb5, type: 3}
+  type: 0
   itemName: "\uCCB4\uB825 \uD3EC\uC158"
+  discription: Hp Potion + 35
   healAmount: 35
+  itemKey: 0
+  price: 500
